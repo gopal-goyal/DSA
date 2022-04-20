@@ -1,0 +1,17 @@
+void flatten(Node *root)
+    {
+        Node* current = root;
+        
+        while(current != NULL){
+            if(current->left){
+                Node* pred = current->left;
+                while(pred->right){
+                    pred = pred->right;
+                }
+                pred->right = current->right;
+                current->right = current->left;
+                current->left = NULL;
+            }
+            current = current->right;
+        }
+    }
